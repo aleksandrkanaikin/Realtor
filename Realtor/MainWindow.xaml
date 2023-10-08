@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Realtor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowState="Maximized"
+        Title="MainWindow" Height="880" Width="1920">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="135"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"
+                    Background="White">
+            <Image Source="../Images/Avatar.png"></Image>
+            <Button Name="WorkTableBtn"
+                    Background="White"
+                    Click="WorkTableBtn_OnClick">
+                <StackPanel>
+                    <Image Source="../Images/Раб.Стол Лого.png"/>
+                    <TextBlock FontSize="22"
+                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Comfortaa"
+                               TextAlignment="Center"
+                               Background="White"
+                               TextWrapping="Wrap"
+                               Text="Рабочий стол"/>
+                </StackPanel>
+            </Button>
+            <Button Name="SalesBtn"
+                    Background="White"
+                    Click="SalesBtn_OnClick">
+                <StackPanel>
+                    <Image Source="../Images/Продажа лого.png"/>
+                    <TextBlock FontSize="22"
+                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Comfortaa"
+                               TextAlignment="Center"
+                               Background="White"
+                               TextWrapping="Wrap"
+                               Text="Продажи"/>
+                </StackPanel>
+            </Button>
+            <Button Name="ClientsBtn"
+                    Background="White"
+                    Click="ClientsBtn_OnClick">
+                <StackPanel>
+                    <Image Source="../Images/Клиенты.png"/>
+                    <TextBlock FontSize="22"
+                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Comfortaa"
+                               TextAlignment="Center"
+                               Background="White"
+                               TextWrapping="Wrap"
+                               Text="Клиенты"/>
+                </StackPanel>
+            </Button>
+            <Button Name="EstateobjectsBtn"
+                    Background="White"
+                    Click="EstateObjectsBtn_OnClick">
+                <StackPanel>
+                    <Image Source="../Images/Объекты.png"/>
+                    <TextBlock FontSize="22"
+                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Comfortaa"
+                               TextAlignment="Center"
+                               Background="White"
+                               TextWrapping="Wrap"
+                               Text="Объекты"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Frame Grid.Column="1" Name="Frame" Source="../Pages/WorkTablePage.xaml"></Frame>
     </Grid>
 </Window>
