@@ -11,13 +11,12 @@ namespace Realtor
     {
         public MainWindow()
         {
-            InitializeComponent();
-            //Frame.Source = new Uri("WorkTablePage.xaml", UriKind.Relative);
+            InitializeComponent(); 
         }
 
         private void WorkTableBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            myFrame.Navigate(new WorkTablePage());
         }
 
         private void SalesBtn_OnClick(object sender, RoutedEventArgs e)
@@ -27,12 +26,12 @@ namespace Realtor
 
         private void ClientsBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            myFrame.Navigate(new Clients());
         }
 
         private void EstateObjectsBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            myFrame.Navigate(new ObjectsPage());
         }
     }
 }

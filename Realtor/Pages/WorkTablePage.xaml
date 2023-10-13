@@ -5,11 +5,159 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Realtor.Pages"
       mc:Ignorable="d"
-      Title="WorkTablePage" Height="880" Width="1305">
+      Title="WorkTablePage" Height="880" Width="1405">
     <Grid>
-        <TextBlock Text="fdvdfvf"
-                   FontSize="52"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel Margin="18,85,0,14">
+            <TextBlock Text="Рабочий стол"
+                       FontSize="52"
+                       FontWeight= "Bold"
+                       FontFamily="/Fonts/#Comfortaa"/>
+        </WrapPanel>
+        <StackPanel Grid.Row="1">
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Name="TodayBtn"
+                        Style="{StaticResource ButtonOverMouse}"
+                        Content="Сегодня"
+                        Foreground="#808080"
+                        FontSize="22"
+                        Background="White"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="#808080"
+                        Width="194"
+                        Height="48" Click="TodayBtn_OnClick"/>
+                <Button Name="WeekBtn"
+                        Style="{StaticResource ButtonOverMouse}"
+                        Content="Неделя"
+                        Foreground="#808080"
+                        FontSize="22"
+                        Background="White"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="#808080"
+                        Width="194"
+                        Height="48"
+                        Click="WeekBtn_OnClick"/>
+                <Button Name="MounthBtn"
+                        Style="{StaticResource ButtonOverMouse}"
+                        Content="Месяц"
+                        Foreground="#808080"
+                        FontSize="22"
+                        Background="White"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="#808080"
+                        Width="194"
+                        Height="48"
+                        Click="MounthBtn_OnClick"></Button>
+            </WrapPanel>
+            <Rectangle Height="1" Width="1405" Fill="#808080"></Rectangle>
+        </StackPanel>
+        <WrapPanel Grid.Row="2">
+           <Border BorderBrush="Black"
+                   CornerRadius="60"
+                   BorderThickness="1"
+                   Margin="19,122,0,0">
+               <StackPanel Margin="20"
+                           Background="White" 
+                           Width="566"
+                           Height="390">
+                   <TextBlock Text="Завершенные продажи"
+                              FontSize="34"
+                              FontFamily="/Fonts/#Comfortaa"
+                              VerticalAlignment="Top"
+                              Padding="80,0,0,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,68,0,0"
+                               Width="186"
+                               HorizontalAlignment="Left">
+                            <TextBlock Name="CountSaleInThisSelect"
+                                FontSize="128"
+                                FontWeight="Bold"
+                                FontFamily="/Fonts/#Comfortaa"
+                                HorizontalAlignment="Left"
+                                Width="186"/>
+                            <TextBlock Name="InThisSelectText"
+                                  FontSize="30"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  TextWrapping="Wrap"
+                                  Width="186"/>
+                        </StackPanel>
+                        <StackPanel Margin="170,68,0,0"
+                                    Width="186"                                
+                                    HorizontalAlignment="Right">
+                            <TextBlock Name="CountSaleInLastSelect"
+                                  FontSize="128"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  Width="186"/>
+                            <TextBlock Name="InLastSelectText"
+                                  FontSize="30"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  TextWrapping="Wrap"
+                                  Width="186"/>
+                        </StackPanel>
+                    </StackPanel>
+               </StackPanel>
+           </Border>
+            <Border BorderBrush="Black"
+                   CornerRadius="60"
+                   BorderThickness="1"
+                   Margin="120,122,0,0">
+                <StackPanel Margin="20"
+                            Background="White" 
+                            Width="566"
+                            Height="390">
+                    <TextBlock Text="Новые клиенты"
+                              FontSize="34"
+                              FontFamily="/Fonts/#Comfortaa"
+                              VerticalAlignment="Top"
+                              Padding="170,0,0,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,68,0,0"
+                               Width="186"
+                               HorizontalAlignment="Left">
+                            <TextBlock Name="CountClientsInThisSelect"
+                                FontSize="128"
+                                FontWeight="Bold"
+                                FontFamily="/Fonts/#Comfortaa"
+                                HorizontalAlignment="Left"
+                                Width="186"/>
+                            <TextBlock Name="InClientThisSelectText"
+                                  FontSize="30"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  TextWrapping="Wrap"
+                                  Width="186"/>
+                        </StackPanel>
+                        <StackPanel Margin="170,68,0,0"
+                                    Width="186"                                
+                                    HorizontalAlignment="Right">
+                            <TextBlock Name="CountClientInLastSelect"
+                                  FontSize="128"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  Width="186"/>
+                            <TextBlock Name="ClientInLastSelectText"
+                                  FontSize="30"
+                                  FontWeight="Bold"
+                                  FontFamily="/Fonts/#Comfortaa"
+                                  HorizontalAlignment="Left"
+                                  TextWrapping="Wrap"
+                                  Width="186"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
     </Grid>
 </Page>

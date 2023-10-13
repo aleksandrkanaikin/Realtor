@@ -17,6 +17,7 @@
             <Image Source="../Images/Avatar.png"></Image>
             <Button Name="WorkTableBtn"
                     Background="White"
+                    Style="{StaticResource ButtonOverMouse}"
                     Click="WorkTableBtn_OnClick">
                 <StackPanel>
                     <Image Source="../Images/Раб.Стол Лого.png"/>
@@ -31,7 +32,8 @@
             </Button>
             <Button Name="SalesBtn"
                     Background="White"
-                    Click="SalesBtn_OnClick">
+                    Click="SalesBtn_OnClick"
+                    Style="{StaticResource ButtonOverMouse}">
                 <StackPanel>
                     <Image Source="../Images/Продажа лого.png"/>
                     <TextBlock FontSize="22"
@@ -45,6 +47,7 @@
             </Button>
             <Button Name="ClientsBtn"
                     Background="White"
+                    Style="{StaticResource ButtonOverMouse}"
                     Click="ClientsBtn_OnClick">
                 <StackPanel>
                     <Image Source="../Images/Клиенты.png"/>
@@ -59,6 +62,7 @@
             </Button>
             <Button Name="EstateobjectsBtn"
                     Background="White"
+                    Style="{StaticResource ButtonOverMouse}"
                     Click="EstateObjectsBtn_OnClick">
                 <StackPanel>
                     <Image Source="../Images/Объекты.png"/>
@@ -72,6 +76,8 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-        <Frame Grid.Column="1" Name="Frame" Source="../Pages/WorkTablePage.xaml"></Frame>
+        <Frame Grid.Column="1" Name="myFrame" 
+               NavigationUIVisibility="Hidden"
+               Source="../Pages/ObjectsPage.xaml"></Frame>
     </Grid>
 </Window>

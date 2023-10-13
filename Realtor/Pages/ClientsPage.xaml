@@ -1,0 +1,56 @@
+﻿<Page x:Class="Realtor.Pages.Clients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Realtor.Pages"
+      xmlns:realtor="clr-namespace:Realtor"
+      mc:Ignorable="d"
+      Title="Clients" Height="880" Width="1405">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147"/>
+            <RowDefinition Height="97"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel Margin="18,85,0,14">
+            <TextBlock Text="Клиенты"
+                       FontSize="52"
+                       FontWeight= "Bold"
+                       FontFamily="/Fonts/#Comfortaa"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1">
+            <TextBox Name="ClientSearchTxb"
+                             Margin="102,28,0,0"
+                             Width="1141"
+                             Height="69"
+                             Text="Введите ФИО"
+                             Foreground="#808080"
+                             FontSize="22"
+                             FontFamily="/Fonts/#Comfortaa"
+                             Padding="42,20,0,15"
+                             HorizontalAlignment="Center"
+                             GotFocus="ClientSearchTxb_OnGotFocus"
+                             LostFocus="ClientSearchTxb_OnLostFocus">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="40"></Setter>
+                        <Setter Property="BorderBrush" Value="#828282"></Setter>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Button Name="SearchButton"
+                    Height="69"
+                    Width="57"
+                    Background="White"
+                    BorderThickness="0"
+                    HorizontalAlignment="Center"
+                    Margin="12,28,0,0"
+                    Style="{StaticResource ButtonOverMouse}"
+                    Click="SearchButton_OnClick">
+                <Image Source="../Images/SearchLogo.png"/>
+            </Button>
+        </WrapPanel> 
+    </Grid>
+</Page>

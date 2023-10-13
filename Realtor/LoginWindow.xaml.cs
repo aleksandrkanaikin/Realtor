@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace Realtor
 {
@@ -11,12 +12,14 @@ namespace Realtor
 
         private void LoginTxb_OnGotFocus(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            LoginTxb.Text = "";
+            LoginTxb.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void PasswordTxb_OnGotFocus(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            PasswordTxb.Text = "";
+            PasswordTxb.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void LogInBtn_OnClick(object sender, RoutedEventArgs e)
