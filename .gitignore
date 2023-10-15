@@ -1,8 +1,10 @@
 bin/
 obj/
-.idea
-.vs
-Realtor.sln
+.idea/
+.vs/
+*.csproj
+*.sln
+*.sln.DotSettings.user
 Realtor.sln.DotSettings.user
 /packages/
 riderModule.iml
