@@ -21,12 +21,12 @@ namespace Realtor
 
         private void SalesBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            myFrame.Navigate(new SalesPage());
         }
 
         private void ClientsBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            myFrame.Navigate(new Clients());
+            myFrame.Navigate(new ClientsPage());
         }
 
         private void EstateObjectsBtn_OnClick(object sender, RoutedEventArgs e)

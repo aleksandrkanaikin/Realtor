@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CreateClientWindow.xaml" />
     <Page Include="ElementStyle\ButtonOverMouse.xaml" />
     <Page Include="LoginWindow.xaml" />
     <Page Include="MainWindow.xaml">
@@ -101,6 +102,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CreateClientWindow.xaml.cs">
+      <DependentUpon>CreateClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +114,7 @@
     </Compile>
     <Page Include="Pages\ClientsPage.xaml" />
     <Page Include="Pages\ObjectsPage.xaml" />
+    <Page Include="Pages\SalesPage.xaml" />
     <Page Include="Pages\WorkTablePage.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +123,9 @@
     </Compile>
     <Compile Include="Pages\ObjectsPage.xaml.cs">
       <DependentUpon>ObjectsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SalesPage.xaml.cs">
+      <DependentUpon>SalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WorkTablePage.xaml.cs">
       <DependentUpon>WorkTablePage.xaml</DependentUpon>

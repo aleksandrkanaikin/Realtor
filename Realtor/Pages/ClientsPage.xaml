@@ -1,4 +1,4 @@
-﻿<Page x:Class="Realtor.Pages.Clients"
+﻿<Page x:Class="Realtor.Pages.ClientsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -52,5 +52,46 @@
                 <Image Source="../Images/SearchLogo.png"/>
             </Button>
         </WrapPanel> 
+        <DataGrid Grid.Row="2" 
+                  Name="ClientsDataGrid" 
+                  AutoGenerateColumns="False"
+                  Margin="0,37,0,0"
+                  FontSize="18" 
+                  FontFamily="/Fonts/#Inter" 
+                  Background="White" 
+                  Width="1240"
+                  BorderBrush="#828282">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Background" Value="#E5E5E5"></Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Width="310" FontFamily="/Fonts/#Inter" Binding="{Binding FIO}"/>
+                <DataGridTextColumn Header="Телефон" Width="310" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Почта" Width="310" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Дата регистрации" Width="310" Binding="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2"
+                Name="CreateNewClientButton"
+                Width="56"
+                Height="56"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0, 15,100"
+                Background="#FF5B19" 
+                Content="+"
+                Foreground="White"
+                FontSize="20"
+                Style="{StaticResource ButtonOverMouse}"
+                Click="CreateNewClientButton_OnClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

@@ -78,6 +78,6 @@
         </StackPanel>
         <Frame Grid.Column="1" Name="myFrame" 
                NavigationUIVisibility="Hidden"
-               Source="../Pages/ObjectsPage.xaml"></Frame>
+               Source="../Pages/WorkTablePage.xaml"></Frame>
     </Grid>
 </Window>

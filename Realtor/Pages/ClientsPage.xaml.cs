@@ -1,14 +1,22 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
+using Entities;
 
 namespace Realtor.Pages
 {
-    public partial class Clients : Page
+    public partial class ClientsPage : Page
     {
-        public Clients()
+        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private ObservableCollection<Clients> ClientsList { get; set; }
+        public ClientsPage()
         {
             InitializeComponent();
+            ClientsList = new ObservableCollection<Clients>(db.Clients.ToList());
+            ClientsDataGrid.ItemsSource = ClientsList;
         }
 
         private void ClientSearchTxb_OnGotFocus(object sender, RoutedEventArgs e)
@@ -19,13 +27,21 @@ namespace Realtor.Pages
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         private void ClientSearchTxb_OnLostFocus(object sender, RoutedEventArgs e)
         {
             ClientSearchTxb.Text = "Введите ФИО";
             ClientSearchTxb.Foreground = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void CreateNewClientButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Window create = new CreateClientWindow();
+            create.ShowDialog();
+            ClientsList = new ObservableCollection<Clients>(db.Clients.ToList());
+            ClientsDataGrid.ItemsSource = ClientsList;
         }
     }
 }
