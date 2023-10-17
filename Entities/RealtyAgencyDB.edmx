@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище RealtyAgencyDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище RealtyAgencyDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Agents">
           <Key>
             <PropertyRef Name="AgentID" />
@@ -38,6 +38,7 @@
           <Property Name="DealDate" Type="date" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
           <Property Name="DealStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="DealName" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Properties">
           <Key>
@@ -121,8 +122,7 @@
             <End Role="Properties" EntitySet="Properties" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RealtyAgencyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -165,6 +165,7 @@
           <NavigationProperty Name="Agents" Relationship="Self.FK__Deals__AgentID__4316F928" FromRole="Deals" ToRole="Agents" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Deals__ClientID__4222D4EF" FromRole="Deals" ToRole="Clients" />
           <NavigationProperty Name="Properties" Relationship="Self.FK__Deals__PropertyI__412EB0B6" FromRole="Deals" ToRole="Properties" />
+          <Property Name="DealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Properties">
           <Key>
@@ -283,6 +284,7 @@
           <EntitySetMapping Name="Deals">
             <EntityTypeMapping TypeName="RealtyAgencyDBModel.Deals">
               <MappingFragment StoreEntitySet="Deals">
+                <ScalarProperty Name="DealName" ColumnName="DealName" />
                 <ScalarProperty Name="DealID" ColumnName="DealID" />
                 <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />

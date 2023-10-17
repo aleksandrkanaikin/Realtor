@@ -6,6 +6,71 @@
       xmlns:local="clr-namespace:Realtor.Pages"
       mc:Ignorable="d"
       Title="SalesPage" Height="880" Width="1405">
+    <Page.Resources>
+        <DataTemplate x:Key="SalesListTemplate">
+            <StackPanel Margin="0,0,10,10"
+                        Width="900"
+                        Height="90"
+                        Background="White">
+                <StackPanel.Effect>
+                    <DropShadowEffect ShadowDepth="5" Direction="260"
+                                      Color="Black" Opacity="0.5"
+                                      BlurRadius="50"></DropShadowEffect>
+                </StackPanel.Effect>
+                <TextBlock FontSize="22"
+                           FontFamily="/Fonts/#Qicksand"
+                           FontWeight="Bold"
+                           Text="{Binding SaleName}"/>
+                <WrapPanel Height="20"
+                           Margin="750,0,0 20">
+                    <TextBlock FontSize="16"
+                               FontFamily="/Fonts/#Inter"
+                               FontWeight="Bold"
+                               Foreground="#828282"
+                               Text="{Binding Date, StringFormat=dd.MM.yyyy}"/>
+                </WrapPanel>
+                <WrapPanel Margin="0 0 0 0">
+                        <TextBlock FontSize="16"
+                                   FontFamily="/Fonts/#Inter"
+                                   FontWeight="Bold"
+                                   Foreground="#828282"
+                                   Margin="0 0 20 0"
+                                   Text="{Binding ClientFio}"/>
+                        <TextBlock FontSize="16"
+                                   FontFamily="/Fonts/#Inter"
+                                   FontWeight="Bold"
+                                   Foreground="#828282"
+                                   Margin="0 0 20 0"
+                                   Text="{Binding ObjectName}"/>
+                        <TextBlock FontSize="16"
+                                   FontFamily="/Fonts/#Inter"
+                                   FontWeight="Bold"
+                                   Foreground="#828282"
+                                   Margin="0 0 20 0"
+                                   Text="{Binding Price}"/>
+                        <TextBlock Name="StatusTextblock"
+                                   FontSize="16"
+                                   FontFamily="/Fonts/#Inter"
+                                   FontWeight="Bold"
+                                   Margin="0 0 20 0"
+                                   Text="{Binding SaleStatus}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SaleStatus}" Value="В процессе">
+                                            <Setter Property="Foreground" Value="#FF5B19" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SaleStatus}" Value="Завершено">
+                                            <Setter Property="Foreground" Value="Green"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </WrapPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="160"/>
@@ -45,5 +110,13 @@
                 </ComboBoxItem>
             </ComboBox>
         </WrapPanel>
+        <ListBox Grid.Row="2" Name="SalesListBox"
+                 Width="900"
+                 Height="475"
+                 HorizontalAlignment="Left"
+                 Margin="70,0,0,0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 BorderThickness="0"
+                 ItemTemplate="{StaticResource SalesListTemplate}"></ListBox>
     </Grid>
 </Page>

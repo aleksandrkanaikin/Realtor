@@ -21,6 +21,7 @@ namespace Entities
         public Nullable<System.DateTime> DealDate { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string DealStatus { get; set; }
+        public string DealName { get; set; }
     
         public virtual Agents Agents { get; set; }
         public virtual Clients Clients { get; set; }

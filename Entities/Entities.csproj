@@ -59,6 +59,7 @@
     <Compile Include="Deals.cs">
       <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Properties.cs">
       <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
     </Compile>
