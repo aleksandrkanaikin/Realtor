@@ -87,7 +87,8 @@
             <ComboBox Name="StatusBox"
                       Margin="60,49,0,0"
                       Width="200"
-                      Background="White">
+                      Background="White"
+                      SelectionChanged="StatusBox_OnSelectionChanged">
                 <ComboBoxItem>
                     <TextBlock Text="Все"
                                FontSize="20"
@@ -117,6 +118,17 @@
                  Margin="70,0,0,0"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  BorderThickness="0"
-                 ItemTemplate="{StaticResource SalesListTemplate}"></ListBox>
+                 ItemTemplate="{StaticResource SalesListTemplate}"
+                 SelectionChanged="SalesListBox_OnSelectionChanged"/>
+        <Border Grid.Row="2" 
+                Name="Border"
+                Visibility="Hidden"
+                Width="400"
+                Height="475"
+                HorizontalAlignment="Right"
+                Margin="30, 0,20,30"
+                BorderThickness="1"
+                BorderBrush="Black">
+        </Border>
     </Grid>
 </Page>

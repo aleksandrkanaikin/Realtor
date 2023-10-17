@@ -5,6 +5,7 @@ namespace Realtor
 {
     public partial class LoginWindow : Window
     {
+        private DataManager _manager = new DataManager();
         public LoginWindow()
         {
             InitializeComponent();
@@ -24,10 +25,17 @@ namespace Realtor
 
         private void LogInBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var wind = new MainWindow();
-            Hide();
-            wind.Show();
-            Close();
+            if (_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text) == null)
+            {
+                var wind = new MainWindow();
+                Hide();
+                wind.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text));
+            }
         }
     }
 }

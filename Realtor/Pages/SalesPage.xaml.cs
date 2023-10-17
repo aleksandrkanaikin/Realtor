@@ -6,39 +6,27 @@ using System.Windows;
 using System.Windows.Controls;
 using Entities;
 using Entities.Models;
+using Realtor.Repository;
 
 namespace Realtor.Pages
 {
     public partial class SalesPage : Page
     {
         private static RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
-        private ObservableCollection<Deals> DealsList;
-        private SalesModel salesModel;
-        List<SalesModel> salesData = db.Deals
-            .Include(d => d.Properties)
-            .Include(d => d.Clients)
-            .Include(d => d.DealStatus) 
-            .Select(d => new SalesModel
-            {
-                ObjectName = d.Properties.Description,
-                ClientFio = d.Clients.FIO,
-                Date = d.DealDate,
-                Price = d.Price,
-                SaleStatus = d.DealStatus,
-                SaleName = d.DealName
-            })
-            .ToList();
+        private DataManager _manager = new DataManager();
 
         public SalesPage()
         {
             InitializeComponent();
-            // salesData теперь содержит список SalesModel, представляющий данные из базы данных
-            List<SalesModel> salesList = salesData;
-            DealsList = new ObservableCollection<Deals>(db.Deals.ToList());
-            SalesListBox.ItemsSource = salesList;
+            SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);
         }
 
-        private void StatusBox_OnSelected(object sender, RoutedEventArgs e)
+        private void SalesListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Border.Visibility = Visibility.Visible;
+        }
+
+        private void StatusBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
         }

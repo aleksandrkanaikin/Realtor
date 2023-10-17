@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Repository\AgentIdStorage.cs" />
     <Page Include="CreateClientWindow.xaml" />
     <Page Include="ElementStyle\ButtonOverMouse.xaml" />
     <Page Include="LoginWindow.xaml" />
@@ -105,6 +106,7 @@
     <Compile Include="CreateClientWindow.xaml.cs">
       <DependentUpon>CreateClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataManager.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
