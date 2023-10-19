@@ -1,16 +1,89 @@
 ﻿using System;
-using System.Collections;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Entities.Annotations;
 
 namespace Entities.Models
 {
-    public class SalesModel
+    public class SalesModel: INotifyPropertyChanged
     {
-        public string ObjectName { get; set; }
-        public string ClientFio { get; set; }
-        public Nullable<DateTime> Date { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string SaleStatus { get; set; }
-        public string SaleName { get; set; }
+        private string objectName;
+        private string clientFio;
+        private Nullable<DateTime> date;
+        private Nullable<decimal> price;
+        private string saleStatus;
+        private string saleName;
+        private string objectDescription;
         
+        public string ObjectName
+        {
+            get { return objectName;}
+            set
+            {
+                objectName = value;
+                OnPropertyChanged();
+            } 
+        }
+        public string ClientFio {
+            get{ return clientFio; }
+            set
+            {
+                clientFio = value;
+            } 
+        }
+        public Nullable<DateTime> Date
+        {
+            get { return date;}
+            set
+            {
+                date = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public Nullable<decimal> Price
+        {
+            get { return price;}
+            set
+            {
+                price = value;
+                OnPropertyChanged();
+            } 
+        }
+        public string SaleStatus
+        {
+            get { return saleStatus;}
+            set
+            {
+                saleStatus = value;
+                OnPropertyChanged();
+            }
+        }
+        public string SaleName
+        {
+            get { return saleName;}
+            set
+            {
+                saleName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ObjectDescription
+        {
+            get { return objectDescription; }
+            set
+            {
+                objectDescription = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

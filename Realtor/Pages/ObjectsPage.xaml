@@ -65,7 +65,8 @@
                      FontFamily="/Fonts/#Comfortaa"
                      Padding="22,15,0,15"
                      Margin="0,0,37,0"
-                     VerticalAlignment="Bottom">
+                     VerticalAlignment="Bottom"
+                     GotFocus="NameSearchBox_OnGotFocus">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="30"/>
@@ -81,7 +82,8 @@
                      FontFamily="/Fonts/#Comfortaa"
                      Padding="22,15,0,15"
                      Margin="0,0,37,0"
-                     VerticalAlignment="Bottom">
+                     VerticalAlignment="Bottom"
+                     GotFocus="PriseSearchBox_OnGotFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="30"/>
@@ -96,7 +98,8 @@
                      FontFamily="/Fonts/#Comfortaa"
                      Padding="22,15,0,15"
                      Margin="0,0,60,0"
-                     VerticalAlignment="Bottom">
+                     VerticalAlignment="Bottom"
+                     GotFocus="AreaSearchBox_OnGotFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="30"/>

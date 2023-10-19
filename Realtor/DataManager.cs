@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
+using Dynamitey.DynamicObjects;
 using Entities;
 using Entities.Models;
 using Realtor.Repository;
@@ -124,7 +124,7 @@ namespace Realtor
             }
         }
 
-        public List<SalesModel> GetAllSalesListForAgent(Guid agentId)
+        public ObservableCollection<SalesModel> GetAllSalesListForAgent(Guid agentId)
         {
             var agentSales = db.Deals
                 .Where(d => d.AgentID == agentId)
@@ -136,10 +136,106 @@ namespace Realtor
                     Date = d.DealDate,
                     Price = d.Price,
                     SaleStatus = d.DealStatus,
-                    SaleName = d.Properties.Address
+                    SaleName = d.DealName,
+                    ObjectDescription = d.Properties.Description
                 })
                 .ToList();
-            return agentSales;
+            return new ObservableCollection<SalesModel>(agentSales);
+        }
+
+        public string DeleteSale(string saleName)
+        {
+            var saleToDelete = db.Deals.SingleOrDefault(deal => deal.DealName == saleName);
+            if (saleName != null)
+            {
+                db.Deals.Remove(saleToDelete);
+                db.SaveChanges();
+                return "Сделка успешно удалена.";
+            }
+            else
+            {
+                return "Сделка не найдена.";
+            }
+        }
+
+        public ObservableCollection<SalesModel> GetInProcessSales(Guid agentId)
+        {
+            var agentSales = db.Deals
+                .Where(d => d.AgentID == agentId && d.DealStatus == "В процессе")
+                .OrderBy(d => d.DealDate)
+                .Select(d => new SalesModel
+                {
+                    ObjectName = d.Properties.Type,
+                    ClientFio = d.Clients.FIO,
+                    Date = d.DealDate,
+                    Price = d.Price,
+                    SaleStatus = d.DealStatus,
+                    SaleName = d.DealName,
+                    ObjectDescription = d.Properties.Description
+                })
+                .ToList();
+            return new ObservableCollection<SalesModel>(agentSales);
+        }
+        public ObservableCollection<SalesModel> GetFinisedSales(Guid agentId)
+        {
+            var agentSales = db.Deals
+                .Where(d => d.AgentID == agentId && d.DealStatus == "Завершено")
+                .OrderBy(d => d.DealDate)
+                .Select(d => new SalesModel
+                {
+                    ObjectName = d.Properties.Type,
+                    ClientFio = d.Clients.FIO,
+                    Date = d.DealDate,
+                    Price = d.Price,
+                    SaleStatus = d.DealStatus,
+                    SaleName = d.DealName,
+                    ObjectDescription = d.Properties.Description
+                })
+                .ToList();
+            return new ObservableCollection<SalesModel>(agentSales);
+        }
+
+        public List<Entities.Properties> NameSearchProperty(string name)
+        {
+            var objects = db.Properties.Where(p => p.Description.ToLower().Contains(name.ToLower())).ToList();
+            return objects;
+        }
+
+        public List<Entities.Properties> AreaSearchProperies(decimal area)
+        {
+            var objects = db.Properties.Where(p => p.Area >= area).ToList();
+            return objects;
+        }
+        public List<Entities.Properties> PriceSearchProperies(decimal price)
+        {
+            var objects = db.Properties.Where(p => p.Price >= price).ToList();
+            return objects;
+        }
+        public List<Entities.Properties> NameAndAreaSearchProperies(string name, decimal area)
+        {
+            var objects = db.Properties.Where(p => p.Description.ToLower().Contains(name.ToLower()) && p.Area >= area ).ToList();
+            return objects;
+        }
+        public List<Entities.Properties> NameAndPriceSearchProperies(string name, decimal price)
+        {
+            var objects = db.Properties.Where(p => p.Description.ToLower().Contains(name.ToLower()) && p.Price >= price).ToList();
+            return objects;
+        }
+        public List<Entities.Properties> AreaAndPriceSearchProperies(decimal area, decimal price)
+        {
+            var objects = db.Properties.Where(p => p.Area >=area && p.Price >= price).ToList();
+            return objects;
+        }
+        public List<Entities.Properties> NameAreaAndPriceSearchProperies(string name ,decimal area, decimal price)
+        {
+            var objects = db.Properties.Where(p => p.Description.ToLower().Contains(name.ToLower()) && p.Area >=area && p.Price >= price).ToList();
+            return objects;
+        }
+
+        public List<Entities.Properties> AllProperties()
+        {
+            var objects = db.Properties.ToList();
+            return objects;
         }
     }
 }
