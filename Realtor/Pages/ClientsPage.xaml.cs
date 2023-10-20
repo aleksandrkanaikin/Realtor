@@ -5,18 +5,18 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using Entities;
+using Realtor.Windows;
 
 namespace Realtor.Pages
 {
     public partial class ClientsPage : Page
     {
         private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
-        private ObservableCollection<Clients> ClientsList { get; set; }
+        private DataManager _manager = new DataManager();
         public ClientsPage()
         {
             InitializeComponent();
-            ClientsList = new ObservableCollection<Clients>(db.Clients.ToList());
-            ClientsDataGrid.ItemsSource = ClientsList;
+            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
         }
 
         private void ClientSearchTxb_OnGotFocus(object sender, RoutedEventArgs e)
@@ -27,11 +27,7 @@ namespace Realtor.Pages
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void ClientSearchTxb_OnLostFocus(object sender, RoutedEventArgs e)
-        {
+            ClientsDataGrid.ItemsSource = _manager.SearchClients(ClientSearchTxb.Text);
             ClientSearchTxb.Text = "Введите ФИО";
             ClientSearchTxb.Foreground = new SolidColorBrush(Colors.Gray);
         }
@@ -40,8 +36,42 @@ namespace Realtor.Pages
         {
             Window create = new CreateClientWindow();
             create.ShowDialog();
-            ClientsList = new ObservableCollection<Clients>(db.Clients.ToList());
-            ClientsDataGrid.ItemsSource = ClientsList;
+            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+        }
+
+        private void ClientsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void EditMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            if (selectedItem != null)
+            {
+                Clients itemToEdit = db.Clients.Find(selectedItem.ClientID); 
+                if (itemToEdit != null)
+                {
+                    Window editWind = new EditClient(itemToEdit);
+                    editWind.ShowDialog();
+                }
+            }
+            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+        }
+
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            if (selectedItem != null)
+            {
+                Clients itemToDelete = db.Clients.Find(selectedItem.ClientID); 
+                if (itemToDelete != null)
+                {
+                    db.Clients.Remove(itemToDelete);
+                    db.SaveChanges();
+                }
+            }
+            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿<Window x:Class="Realtor.Windows.EditClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Realtor.Windows"
+        mc:Ignorable="d"
+        Title="EditClient" Height="300" Width="400">
+    <Grid>
+        <Label Content="ФИО:"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="10,10,0,0"
+               FontWeight= "Bold"
+               FontFamily="/Fonts/#Comfortaa"/>
+        <TextBox Name="FIOTextBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="80,10,10,0" 
+                 Width="300"
+                 FontWeight="Bold"
+                 FontFamily="/Fonts/#Comfortaa"/>
+        <Label Content="Телефон:" 
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="10,40,0,0"
+               FontWeight= "Bold"
+               FontFamily="/Fonts/#Comfortaa"/>
+        <TextBox Name="PhoneTextBox" 
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="80,40,10,0"
+                 Width="300"
+                 FontWeight= "Bold"
+                 FontFamily="/Fonts/#Comfortaa"/>
+        <Label Content="Почта:"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="10,70,0,0"
+               FontWeight= "Bold"
+               FontFamily="/Fonts/#Comfortaa"/>
+        <TextBox Name="EmailTextBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="80,70,10,0"
+                 Width="300"
+                 FontWeight= "Bold"
+                 FontFamily="/Fonts/#Comfortaa"/>
+        <Button Name="CreateButton"
+                Content="Сохранить"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Margin="90,0,0,10"
+                Width="100"
+                Background="#FF5B19"
+                Style="{StaticResource ButtonOverMouse}"
+                Click="SaveButton_OnClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="CancelButton"
+                Content="Отмена"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,90,10"
+                Width="100"
+                Background="#FF5B19"
+                Style="{StaticResource ButtonOverMouse}"
+                Click="CancelButton_OnClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

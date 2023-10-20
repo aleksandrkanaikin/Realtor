@@ -95,6 +95,9 @@
     <Compile Include="Windows\CreateClientWindow.xaml.cs">
       <DependentUpon>CreateClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EditClient.xaml.cs">
+      <DependentUpon>EditClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,7 @@
     <Page Include="Pages\SalesPage.xaml" />
     <Page Include="Pages\WorkTablePage.xaml" />
     <Page Include="Windows\CreateClientWindow.xaml" />
+    <Page Include="Windows\EditClient.xaml" />
     <Page Include="Windows\LoginWindow.xaml" />
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

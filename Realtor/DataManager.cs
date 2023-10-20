@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using Dynamitey.DynamicObjects;
 using Entities;
 using Entities.Models;
@@ -234,8 +235,18 @@ namespace Realtor
 
         public List<Entities.Properties> AllProperties()
         {
-            var objects = db.Properties.ToList();
-            return objects;
+            return db.Properties.ToList();;
+        }
+
+        public ObservableCollection<Clients> GetAllClient()
+        {
+            return new ObservableCollection<Clients>(db.Clients.ToList());
+        }
+
+        public List<Clients> SearchClients(string FIO)
+        {
+            var searchClients = db.Clients.Where(c => c.FIO.ToLower().Contains(FIO.ToLower())).ToList();
+            return searchClients;
         }
     }
 }

@@ -8,6 +8,12 @@
       xmlns:realtor="clr-namespace:Realtor"
       mc:Ignorable="d"
       Title="Clients" Height="880" Width="1405">
+    <Page.Resources>
+        <ContextMenu x:Key="DataGridContextMenu">
+            <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>
+            <MenuItem Header="Удалить" Click="DeleteMenuItem_Click"/>
+        </ContextMenu>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="147"/>
@@ -31,8 +37,7 @@
                              FontFamily="/Fonts/#Comfortaa"
                              Padding="42,20,0,15"
                              HorizontalAlignment="Center"
-                             GotFocus="ClientSearchTxb_OnGotFocus"
-                             LostFocus="ClientSearchTxb_OnLostFocus">
+                             GotFocus="ClientSearchTxb_OnGotFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="40"></Setter>
@@ -60,7 +65,9 @@
                   FontFamily="/Fonts/#Inter" 
                   Background="White" 
                   Width="1240"
-                  BorderBrush="#828282">
+                  BorderBrush="#828282" 
+                  ContextMenu="{StaticResource DataGridContextMenu}"
+                  SelectionChanged="ClientsDataGrid_OnSelectionChanged">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="FontWeight" Value="Bold"/>

@@ -40,15 +40,16 @@ namespace Realtor.Pages
         private void StatusFilterBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem) StatusFilterBox.SelectedItem;
-            if ((string) selectedItem.Content == "Все")
+            string selectedValue = selectedItem.ToString();
+            if (selectedValue == "Все")
             {
                 SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);
             }
-            if((string) selectedItem.Content == "В процессе")
+            if(selectedValue == "В процессе")
             {
                 SalesListBox.ItemsSource = _manager.GetInProcessSales(AgentIdStorage.AgentId);
             }
-            if ((string) selectedItem.Content == "Завершено")
+            if (selectedValue == "Завершено")
             {
                 SalesListBox.ItemsSource = _manager.GetFinisedSales(AgentIdStorage.AgentId);
             }
