@@ -111,6 +111,22 @@
                                Foreground="Green"/>
                 </ComboBoxItem>
             </ComboBox>
+            <Button Name="CreateNewSaleButton"
+                    Width="200"
+                    Height="28"
+                    VerticalAlignment="Bottom"
+                    Margin="800,0,0,0"
+                    Background="#FF5B19"
+                    Content="+ Новая продажа"
+                    FontSize="20"
+                    FontFamily="/Fonts/#Qicksand"
+                    Style="{StaticResource ButtonOverMouse}"
+                    Click="CreateNewSaleButton_OnClick">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"></Setter>
+                    </Style>
+                </Button.Resources></Button>
         </WrapPanel>
         <ListBox Grid.Row="2" Name="SalesListBox"
                  Width="900"
@@ -187,6 +203,7 @@
                             Height="69"
                             Content="Удалить"
                             Background="#FF5B19"
+                            FontSize="22"
                             HorizontalAlignment="Center"
                             Margin="0,100,0,0"
                             Style="{StaticResource ButtonOverMouse}"

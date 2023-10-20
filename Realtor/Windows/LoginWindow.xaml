@@ -47,7 +47,7 @@
                      FontSize="22"
                      FontFamily="/Fonts/#Comfortaa"
                      Padding="20,20,0,0"
-                     Text="Введите логин"
+                     Text="Введите номер телефона"
                      Margin="0,0,0,71"
                      GotFocus="LoginTxb_OnGotFocus">
                 <TextBox.Resources>

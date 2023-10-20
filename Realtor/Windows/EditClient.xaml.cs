@@ -7,6 +7,7 @@ namespace Realtor.Windows
     {
         private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
         private Clients clientForUpdate;
+        private Validator validator = new Validator();  
         public EditClient(Clients clientForEdit)
         {
             InitializeComponent();
@@ -18,15 +19,23 @@ namespace Realtor.Windows
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var client = db.Clients.Find(clientForUpdate.ClientID);
-            if (client != null)
+            if (validator.EmailValid(EmailTextBox.Text) == null && validator.PhoneValid(PhoneTextBox.Text) == null)
             {
-                client.FIO = FIOTextBox.Text;
-                client.Phone = PhoneTextBox.Text;
-                client.Email = EmailTextBox.Text;
-                db.SaveChanges();
+                var client = db.Clients.Find(clientForUpdate.ClientID);
+                if (client != null)
+                {
+                    client.FIO = FIOTextBox.Text;
+                    client.Phone = PhoneTextBox.Text;
+                    client.Email = EmailTextBox.Text;
+                    db.SaveChanges();
+                }
+                Close();
             }
-            Close();
+            else
+            {
+                MessageBox.Show(validator.EmailValid(EmailTextBox.Text) + "\n или \n" + 
+                                validator.PhoneValid(PhoneTextBox.Text));
+            }
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)

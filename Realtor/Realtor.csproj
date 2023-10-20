@@ -92,8 +92,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Repository\AgentIdStorage.cs" />
+    <Compile Include="Validator.cs" />
     <Compile Include="Windows\CreateClientWindow.xaml.cs">
       <DependentUpon>CreateClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CreateNewSale.xaml.cs">
+      <DependentUpon>CreateNewSale.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditClient.xaml.cs">
       <DependentUpon>EditClient.xaml</DependentUpon>
@@ -116,6 +120,7 @@
     <Page Include="Pages\SalesPage.xaml" />
     <Page Include="Pages\WorkTablePage.xaml" />
     <Page Include="Windows\CreateClientWindow.xaml" />
+    <Page Include="Windows\CreateNewSale.xaml" />
     <Page Include="Windows\EditClient.xaml" />
     <Page Include="Windows\LoginWindow.xaml" />
     <Page Include="Windows\MainWindow.xaml">
@@ -183,6 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ExitLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

@@ -55,6 +55,17 @@
             </WrapPanel>
             <Rectangle Height="1" Width="1405" Fill="#808080"></Rectangle>
         </StackPanel>
+        <Button Name="ExitButton"
+                Width="54"
+                Height="54"
+                Background="White"
+                Style="{StaticResource ButtonOverMouse}"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                Margin="40"
+                Click="ExitButton_OnClick">
+            <Image Source="../Images/ExitLogo.png"/>
+        </Button>
         <WrapPanel Grid.Row="2">
            <Border BorderBrush="Black"
                    CornerRadius="60"

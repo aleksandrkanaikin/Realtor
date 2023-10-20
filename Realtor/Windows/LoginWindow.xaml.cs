@@ -6,6 +6,7 @@ namespace Realtor
     public partial class LoginWindow : Window
     {
         private DataManager _manager = new DataManager();
+        private Validator _validator = new Validator();
         public LoginWindow()
         {
             InitializeComponent();
@@ -25,16 +26,23 @@ namespace Realtor
 
         private void LogInBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text) == null)
+            if (_validator.PhoneValid(LoginTxb.Text) == null)
             {
-                var wind = new MainWindow();
-                Hide();
-                wind.Show();
-                Close();
+                if (_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text) == null)
+                {
+                    var wind = new MainWindow();
+                    Hide();
+                    wind.Show();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text));
+                }
             }
             else
             {
-                MessageBox.Show(_manager.LoginManager(LoginTxb.Text, PasswordTxb.Text));
+                MessageBox.Show(_validator.PhoneValid(LoginTxb.Text));
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Realtor
     {
         private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
         private Clients newClient;
+        private Validator validator = new Validator();
         public CreateClientWindow()
         {
             InitializeComponent();
@@ -20,25 +21,32 @@ namespace Realtor
             string phone = PhoneTextBox.Text;
             string email = EmailTextBox.Text;
 
-            newClient = new Clients()
+            if (validator.EmailValid(email) == null && validator.PhoneValid(phone) == null)
             {
-                ClientID = Guid.NewGuid(),
-                Deals = null,
-                Email = email,
-                FIO = fio,
-                Phone = phone,
-                RegistrationDate = DateTime.Today
-            };
+                newClient = new Clients()
+                {
+                    ClientID = Guid.NewGuid(),
+                    Deals = null,
+                    Email = email,
+                    FIO = fio,
+                    Phone = phone,
+                    RegistrationDate = DateTime.Today
+                };
 
-            db.Clients.Add(newClient);
-            try
-            {
-                db.SaveChanges();
-                Close();
+                db.Clients.Add(newClient);
+                try
+                {
+                    db.SaveChanges();
+                    Close();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(validator.EmailValid(email) + "\n или \n" + validator.PhoneValid(phone));
             }
         }
 

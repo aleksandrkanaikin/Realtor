@@ -106,5 +106,13 @@ namespace Realtor.Pages
             InThisSelectText.Text = "Сегодня";
             InLastSelectText.Text = "Вчера";
         }
+
+        private void ExitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var windLogIn = new LoginWindow();
+            var windThis = Window.GetWindow(this);
+            windLogIn.Show();
+            windThis.Close();
+        }
     }
 }
