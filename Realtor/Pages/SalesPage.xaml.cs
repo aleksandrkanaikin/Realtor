@@ -44,7 +44,6 @@ namespace Realtor.Pages
             }
         }
         
-        //Доработать Фильтрацию по статусу сделки
         private void StatusFilterBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem) StatusFilterBox.SelectedItem;
@@ -62,7 +61,6 @@ namespace Realtor.Pages
                 SalesListBox.ItemsSource = _manager.GetFinishedSales(AgentIdStorage.AgentId);
             }
         }
-        //Доработать перевод статуса сделки
         private void SelectedSaleStatus_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SelectedSaleStatus.SelectedItem == InProcessSelectedSale)
