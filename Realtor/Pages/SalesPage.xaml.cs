@@ -13,14 +13,13 @@ namespace Realtor.Pages
     {
         private static RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
         private DataManager _manager = new DataManager();
-        private ObservableCollection<SalesModel> salesList;
         private SalesModel selectSale = new SalesModel();
 
         public SalesPage()
         {
             InitializeComponent();
-            salesList = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);
-            SalesListBox.ItemsSource = salesList;
+            StatusFilterBox.SelectedItem = AllItem;
+            SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);;
         }
 
         private void SalesListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,7 +35,6 @@ namespace Realtor.Pages
                 ClientFio.Text = sale.ClientFio;
                 ObjectDescription.Text = sale.ObjectDescription;
             }
-
         }
         
         //Доработать Фильтрацию по статусу сделки
@@ -44,18 +42,17 @@ namespace Realtor.Pages
         {
             ComboBoxItem selectedItem = (ComboBoxItem) StatusFilterBox.SelectedItem;
             string selectedValue = selectedItem.Content.ToString();
-            if (selectedValue == "Все")
+            if (selectedItem ==  AllItem)
             {
                 SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);
             }
-            if(selectedValue == "В процессе")
+            if(selectedItem == InProcessItem)
             {
                 SalesListBox.ItemsSource = _manager.GetInProcessSales(AgentIdStorage.AgentId);
             }
-
-            if (selectedValue == "Завершено")
+            if (selectedItem == FinishedItem)
             {
-                SalesListBox.ItemsSource = _manager.GetFinisedSales(AgentIdStorage.AgentId);
+                SalesListBox.ItemsSource = _manager.GetFinishedSales(AgentIdStorage.AgentId);
             }
         }
         //Доработать перевод статуса сделки

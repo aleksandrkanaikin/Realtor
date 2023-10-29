@@ -26,6 +26,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="RegistrationDate" Type="date" />
+          <Property Name="AgentID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Deals">
           <Key>
@@ -49,9 +50,21 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Area" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="Description" Type="ntext" />
+          <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="AgentID" Type="uniqueidentifier" />
         </EntityType>
+        <Association Name="FK__Clients__AgentID__01142BA1">
+          <End Role="Agents" Type="Self.Agents" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="AgentID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Deals__AgentID__4316F928">
           <End Role="Agents" Type="Self.Agents" Multiplicity="0..1" />
           <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
@@ -105,6 +118,10 @@
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deals" EntityType="Self.Deals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clients__AgentID__01142BA1" Association="Self.FK__Clients__AgentID__01142BA1">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
           <AssociationSet Name="FK__Deals__AgentID__4316F928" Association="Self.FK__Deals__AgentID__4316F928">
             <End Role="Agents" EntitySet="Agents" />
             <End Role="Deals" EntitySet="Deals" />
@@ -139,6 +156,7 @@
           <Property Name="HireDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Deals" Relationship="Self.FK__Deals__AgentID__4316F928" FromRole="Agents" ToRole="Deals" />
           <NavigationProperty Name="Properties" Relationship="Self.FK__Propertie__Agent__3D5E1FD2" FromRole="Agents" ToRole="Properties" />
+          <NavigationProperty Name="Clients" Relationship="RealtyAgencyDBModel.FK__Clients__AgentID__01142BA1" FromRole="Agents" ToRole="Clients" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -150,6 +168,8 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RegistrationDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Deals" Relationship="Self.FK__Deals__ClientID__4222D4EF" FromRole="Clients" ToRole="Deals" />
+          <Property Name="AgentID" Type="Guid" />
+          <NavigationProperty Name="Agents" Relationship="RealtyAgencyDBModel.FK__Clients__AgentID__01142BA1" FromRole="Clients" ToRole="Agents" />
         </EntityType>
         <EntityType Name="Deals">
           <Key>
@@ -250,7 +270,23 @@
             <End Role="Properties" EntitySet="Properties" />
             <End Role="Deals" EntitySet="Deals" />
           </AssociationSet>
+          <AssociationSet Name="FK__Clients__AgentID__01142BA1" Association="RealtyAgencyDBModel.FK__Clients__AgentID__01142BA1">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Clients__AgentID__01142BA1">
+          <End Type="RealtyAgencyDBModel.Agents" Role="Agents" Multiplicity="0..1" />
+          <End Type="RealtyAgencyDBModel.Clients" Role="Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="AgentID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -273,6 +309,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="RealtyAgencyDBModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />

@@ -16,7 +16,8 @@ namespace Realtor.Pages
         public ClientsPage()
         {
             InitializeComponent();
-            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            ClientsList.ItemsSource = _manager.GetAllClient();
+            // ClientsDataGrid.ItemsSource = _manager.GetAllClient();
         }
 
         private void ClientSearchTxb_OnGotFocus(object sender, RoutedEventArgs e)
@@ -27,7 +28,8 @@ namespace Realtor.Pages
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            ClientsDataGrid.ItemsSource = _manager.SearchClients(ClientSearchTxb.Text);
+            // ClientsDataGrid.ItemsSource = _manager.SearchClients(ClientSearchTxb.Text);
+            ClientsList.ItemsSource = _manager.SearchClients(ClientSearchTxb.Text);
             ClientSearchTxb.Text = "Введите ФИО";
             ClientSearchTxb.Foreground = new SolidColorBrush(Colors.Gray);
         }
@@ -36,7 +38,8 @@ namespace Realtor.Pages
         {
             Window create = new CreateClientWindow();
             create.ShowDialog();
-            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            // ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            ClientsList.ItemsSource = _manager.GetAllClient();
         }
 
         private void ClientsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,7 +49,8 @@ namespace Realtor.Pages
 
         private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            // var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            var selectedItem = ClientsList.SelectedItem as Clients;
             if (selectedItem != null)
             {
                 Clients itemToEdit = db.Clients.Find(selectedItem.ClientID); 
@@ -56,12 +60,14 @@ namespace Realtor.Pages
                     editWind.ShowDialog();
                 }
             }
-            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            ClientsList.ItemsSource = _manager.GetAllClient();
+             // ClientsDataGrid.ItemsSource = _manager.GetAllClient();
         }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            //var selectedItem = ClientsDataGrid.SelectedItem as Clients;
+            var selectedItem = ClientsList.SelectedItem as Clients;
             if (selectedItem != null)
             {
                 Clients itemToDelete = db.Clients.Find(selectedItem.ClientID); 
@@ -71,7 +77,8 @@ namespace Realtor.Pages
                     db.SaveChanges();
                 }
             }
-            ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            // ClientsDataGrid.ItemsSource = _manager.GetAllClient();
+            ClientsList.ItemsSource = _manager.GetAllClient();
         }
     }
 }

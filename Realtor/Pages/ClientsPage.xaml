@@ -9,10 +9,44 @@
       mc:Ignorable="d"
       Title="Clients" Height="880" Width="1405">
     <Page.Resources>
-        <ContextMenu x:Key="DataGridContextMenu">
+        <ContextMenu x:Key="ClientContextMenu">
             <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>
             <MenuItem Header="Удалить" Click="DeleteMenuItem_Click"/>
         </ContextMenu>
+        <DataTemplate x:Key="ClientsTemplate">
+            <WrapPanel Margin="0,0,10,10"
+                    Width="1240"
+                    Height="90"
+                    Background="White">
+                <WrapPanel.Effect>
+                    <DropShadowEffect ShadowDepth="5" Direction="260"
+                                      Color="Black" Opacity="0.5"
+                                      BlurRadius="50"/>
+                </WrapPanel.Effect>
+                <WrapPanel Margin="0,40,0,0">
+                    <TextBlock Width="310"
+                               FontSize="18"
+                               FontFamily="/Fonts/#Inter"
+                               Text="{Binding FIO}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Width="310"
+                               FontSize="18"
+                               FontFamily="/Fonts/#Inter"
+                               Text="{Binding Phone}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Width="310"
+                               FontSize="18"
+                               FontFamily="/Fonts/#Inter"
+                               Text="{Binding Email}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Width="310"
+                               FontSize="18"
+                               FontFamily="/Fonts/#Inter"
+                               Text="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"
+                               HorizontalAlignment="Center"/>
+                </WrapPanel>
+            </WrapPanel>
+        </DataTemplate>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -57,30 +91,67 @@
                 <Image Source="../Images/SearchLogo.png"/>
             </Button>
         </WrapPanel> 
-        <DataGrid Grid.Row="2" 
-                  Name="ClientsDataGrid" 
-                  AutoGenerateColumns="False"
-                  Margin="0,37,0,0"
-                  FontSize="18" 
-                  FontFamily="/Fonts/#Inter" 
-                  Background="White" 
-                  Width="1240"
-                  BorderBrush="#828282" 
-                  ContextMenu="{StaticResource DataGridContextMenu}"
-                  SelectionChanged="ClientsDataGrid_OnSelectionChanged">
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="Background" Value="#E5E5E5"></Setter>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="310" FontFamily="/Fonts/#Inter" Binding="{Binding FIO}"/>
-                <DataGridTextColumn Header="Телефон" Width="310" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="Почта" Width="310" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Дата регистрации" Width="310" Binding="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <!-- <DataGrid Grid.Row="2" -->
+        <!--           Name="ClientsDataGrid" -->
+        <!--           AutoGenerateColumns="False" -->
+        <!--           Margin="0,37,0,0" -->
+        <!--           FontSize="18" -->
+        <!--           FontFamily="/Fonts/#Inter" -->
+        <!--           Background="White" -->
+        <!--           Width="1240" -->
+        <!--           BorderBrush="#828282" -->
+        <!--           ContextMenu="{StaticResource ClientContextMenu}" -->
+        <!--           SelectionChanged="ClientsDataGrid_OnSelectionChanged"> -->
+        <!--     <DataGrid.ColumnHeaderStyle> -->
+        <!--         <Style TargetType="DataGridColumnHeader"> -->
+        <!--             <Setter Property="FontWeight" Value="Bold"/> -->
+        <!--             <Setter Property="Background" Value="#E5E5E5"></Setter> -->
+        <!--         </Style> -->
+        <!--     </DataGrid.ColumnHeaderStyle> -->
+        <!--     <DataGrid.Columns> -->
+        <!--         <DataGridTextColumn Header="ФИО" Width="310" FontFamily="/Fonts/#Inter" Binding="{Binding FIO}"/> -->
+        <!--         <DataGridTextColumn Header="Телефон" Width="310" Binding="{Binding Phone}"/> -->
+        <!--         <DataGridTextColumn Header="Почта" Width="310" Binding="{Binding Email}"/> -->
+        <!--         <DataGridTextColumn Header="Дата регистрации" Width="310" Binding="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"></DataGridTextColumn> -->
+        <!--     </DataGrid.Columns> -->
+        <!-- </DataGrid> -->
+        <StackPanel Grid.Row="2">
+            <WrapPanel HorizontalAlignment="Center"
+                       Margin="0,20,0,0">
+                <TextBlock Width="310"
+                           FontSize="20"
+                           FontFamily="/Fonts/#Inter"
+                           FontWeight="Bold"
+                           Text="ФИО"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Width="310"
+                           FontSize="20"
+                           FontFamily="/Fonts/#Inter"
+                           FontWeight="Bold"
+                           Text="Телефон"
+                           HorizontalAlignment="Center"/>
+                 <TextBlock Width="310"
+                           FontSize="20"
+                           FontFamily="/Fonts/#Inter"
+                           FontWeight="Bold"
+                           Text="Почта"
+                           HorizontalAlignment="Center"/>
+                 <TextBlock Width="310"
+                           FontSize="20"
+                           FontFamily="/Fonts/#Inter"
+                           FontWeight="Bold"
+                           Text="Дата регистрации"
+                           HorizontalAlignment="Center"/>
+            </WrapPanel>
+            <ListBox Name="ClientsList"
+                     Width="1240"
+                     Height="530"
+                     Margin="0,10,0,0"
+                     BorderThickness="0"
+                     ItemTemplate="{StaticResource ClientsTemplate}"
+                     ContextMenu="{StaticResource ClientContextMenu}">
+            </ListBox>
+        </StackPanel>
         <Button Grid.Row="2"
                 Name="CreateNewClientButton"
                 Width="56"

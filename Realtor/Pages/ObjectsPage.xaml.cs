@@ -26,38 +26,37 @@ namespace Realtor.Pages
             }
             if (AreaSearchBox.Text != "Минимальная площадь" && NameSearchBox.Text == "Поиск" && PriseSearchBox.Text == "Цена")
             {
-                ListBox.ItemsSource = _manager.AreaSearchProperies(Convert.ToDecimal(AreaSearchBox.Text));
+                ListBox.ItemsSource = _manager.AreaSearchProperties(Convert.ToDecimal(AreaSearchBox.Text));
             }
-
             if (PriseSearchBox.Text != "Цена" && AreaSearchBox.Text == "Минимальная площадь" &&
                 NameSearchBox.Text == "Поиск")
             {
-                ListBox.ItemsSource = _manager.PriceSearchProperies(Convert.ToDecimal(PriseSearchBox.Text));
+                ListBox.ItemsSource = _manager.PriceSearchProperties(Convert.ToDecimal(PriseSearchBox.Text));
             } 
             if (PriseSearchBox.Text == "Цена" && AreaSearchBox.Text != "Минимальная площадь" &&
                 NameSearchBox.Text != "Поиск")
             {
-                ListBox.ItemsSource = _manager.NameAndAreaSearchProperies(NameSearchBox.Text,Convert.ToDecimal(AreaSearchBox.Text));
+                ListBox.ItemsSource = _manager.NameAndAreaSearchProperties(NameSearchBox.Text,Convert.ToDecimal(AreaSearchBox.Text));
             }
             if (PriseSearchBox.Text != "Цена" && AreaSearchBox.Text != "Минимальная площадь" &&
                 NameSearchBox.Text == "Поиск")
             {
-                ListBox.ItemsSource = _manager.AreaAndPriceSearchProperies(Convert.ToDecimal(AreaSearchBox.Text), Convert.ToDecimal(PriseSearchBox.Text));
+                ListBox.ItemsSource = _manager.AreaAndPriceSearchProperties(Convert.ToDecimal(AreaSearchBox.Text), Convert.ToDecimal(PriseSearchBox.Text));
             }
-
             if (PriseSearchBox.Text != "Цена" && AreaSearchBox.Text == "Минимальная площадь" &&
                 NameSearchBox.Text != "Поиск")
             {
                 ListBox.ItemsSource =
-                    _manager.NameAndPriceSearchProperies(NameSearchBox.Text, Convert.ToDecimal(PriseSearchBox.Text));
+                    _manager.NameAndPriceSearchProperties(NameSearchBox.Text, Convert.ToDecimal(PriseSearchBox.Text));
             } 
             if (PriseSearchBox.Text != "Цена" && AreaSearchBox.Text != "Минимальная площадь" &&
                 NameSearchBox.Text != "Поиск")
             {
                 ListBox.ItemsSource =
-                    _manager.NameAreaAndPriceSearchProperies(NameSearchBox.Text, Convert.ToDecimal(AreaSearchBox.Text), Convert.ToDecimal(PriseSearchBox.Text));
+                    _manager.NameAreaAndPriceSearchProperties(NameSearchBox.Text, Convert.ToDecimal(AreaSearchBox.Text), Convert.ToDecimal(PriseSearchBox.Text));
             }
-            else
+            else if(PriseSearchBox.Text == "Цена" && AreaSearchBox.Text == "Минимальная площадь" &&
+                    NameSearchBox.Text == "Поиск")
             {
                 ListBox.ItemsSource = _manager.AllProperties();
             }

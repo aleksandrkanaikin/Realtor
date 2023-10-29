@@ -13,6 +13,7 @@
         <AssociationConnector Association="RealtyAgencyDBModel.FK__Propertie__Agent__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="RealtyAgencyDBModel.FK__Deals__ClientID__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="RealtyAgencyDBModel.FK__Deals__PropertyI__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="RealtyAgencyDBModel.FK__Clients__AgentID__01142BA1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

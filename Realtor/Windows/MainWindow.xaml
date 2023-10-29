@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Realtor"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="880" Width="1920">
+        Icon="../Images/Logo.png"
+        Title="Realtor" Height="880" Width="1920">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="135"/>

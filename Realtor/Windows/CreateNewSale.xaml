@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Realtor.Windows"
         mc:Ignorable="d"
-        Title="CreateNewSale" Height="350" Width="420">
+        Icon="../Images/Logo.png"
+        Title="Новая сделка" Height="350" Width="420">
     <Window.Resources>
         <DataTemplate x:Key="ObjectsTemplate">
             <WrapPanel Height="80"

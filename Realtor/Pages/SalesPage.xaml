@@ -16,7 +16,7 @@
                 <StackPanel.Effect>
                     <DropShadowEffect ShadowDepth="5" Direction="260"
                                       Color="Black" Opacity="0.5"
-                                      BlurRadius="50"></DropShadowEffect>
+                                      BlurRadius="50"/>
                 </StackPanel.Effect>
                 <TextBlock FontSize="22"
                            FontFamily="/Fonts/#Qicksand"
@@ -90,20 +90,20 @@
                       Width="200"
                       Background="White"
                       SelectionChanged="StatusFilterBox_OnSelectionChanged">
-                <ComboBoxItem>
+                <ComboBoxItem Name="AllItem">
                     <TextBlock Text="Все"
                                FontSize="20"
                                FontFamily="/Fonts/#Comfortaa"
                                FontWeight="Bold"/>
                 </ComboBoxItem>
-                <ComboBoxItem>
+                <ComboBoxItem Name="InProcessItem">
                     <TextBlock Text="В процессе"
                     FontSize="20"
                     FontFamily="/Fonts/#Comfortaa"
                     FontWeight="Bold"
                     Foreground="#FF5B19"/>
                 </ComboBoxItem>
-                <ComboBoxItem>
+                <ComboBoxItem Name="FinishedItem">
                     <TextBlock Text="Завершено"
                                FontSize="20"
                                FontFamily="/Fonts/#Comfortaa"

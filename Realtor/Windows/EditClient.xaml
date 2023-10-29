@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Realtor.Windows"
         mc:Ignorable="d"
-        Title="EditClient" Height="300" Width="400">
+        Icon="../Images/Logo.png"
+        Title="Редактирование клиента" Height="300" Width="400">
     <Grid>
         <Label Content="ФИО:"
                HorizontalAlignment="Left"

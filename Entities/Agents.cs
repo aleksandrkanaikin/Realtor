@@ -19,6 +19,7 @@ namespace Entities
         {
             this.Deals = new HashSet<Deals>();
             this.Properties = new HashSet<Properties>();
+            this.Clients = new HashSet<Clients>();
         }
     
         public System.Guid AgentID { get; set; }
@@ -33,5 +34,7 @@ namespace Entities
         public virtual ICollection<Deals> Deals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Properties> Properties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

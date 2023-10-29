@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Realtor"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="LoginWindow" Height="880" Width="1920">
+        Icon="../Images/Logo.png"
+        Title="Realtor" Height="880" Width="1920">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle" BasedOn="{StaticResource ButtonOverMouse}">
             <Setter Property="Width" Value="579"/>
@@ -77,6 +78,7 @@
             <Button Name="LogInBtn"
                     Style="{StaticResource ButtonStyle}"
                     Content="Войти"
+                    IsDefault="True"
                     Click="LogInBtn_OnClick">
                 <Button.Resources>
                     <Style TargetType="Border">
