@@ -15,6 +15,7 @@ namespace Entities.Models
         private string saleName;
         private string objectDescription;
         
+        public Guid SaleId { get; set; }
         public string ObjectName
         {
             get { return objectName;}

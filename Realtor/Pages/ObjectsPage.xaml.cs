@@ -72,23 +72,45 @@ namespace Realtor.Pages
 
         private void NameSearchBox_OnGotFocus(object sender, RoutedEventArgs e)
         {
+            if(NameSearchBox.Text != "Поиск") return;
             NameSearchBox.Text = "";
             NameSearchBox.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void PriseSearchBox_OnGotFocus(object sender, RoutedEventArgs e)
         {
+            if(PriseSearchBox.Text != "Цена") return;
             PriseSearchBox.Text = "";
             PriseSearchBox.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void AreaSearchBox_OnGotFocus(object sender, RoutedEventArgs e)
         {
+            if(AreaSearchBox.Text != "Минимальная площадь") return;
             AreaSearchBox.Text = "";
             AreaSearchBox.Foreground = new SolidColorBrush(Colors.Black);
         }
+        
+        private void NameSearchBox_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (NameSearchBox.Text != "") return;
+            NameSearchBox.Text = "Поиск";
+            NameSearchBox.Foreground = new SolidColorBrush(Colors.Gray);
+        }
 
+        private void PriseSearchBox_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (PriseSearchBox.Text != "") return;
+            PriseSearchBox.Text = "Цена";
+            PriseSearchBox.Foreground = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void AreaSearchBox_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (AreaSearchBox.Text != "") return;
+            AreaSearchBox.Text = "Минимальная площадь";
+            AreaSearchBox.Foreground = new SolidColorBrush(Colors.Gray);
+        }
         #endregion
-       
     }
 }

@@ -12,18 +12,6 @@ namespace Realtor
             InitializeComponent();
         }
 
-        private void LoginTxb_OnGotFocus(object sender, RoutedEventArgs e)
-        {
-            LoginTxb.Text = "";
-            LoginTxb.Foreground = new SolidColorBrush(Colors.Black);
-        }
-
-        private void PasswordTxb_OnGotFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordTxb.Text = "";
-            PasswordTxb.Foreground = new SolidColorBrush(Colors.Black);
-        }
-
         private void LogInBtn_OnClick(object sender, RoutedEventArgs e)
         {
             if (_validator.PhoneValid(LoginTxb.Text) == null)
@@ -45,5 +33,36 @@ namespace Realtor
                 MessageBox.Show(_validator.PhoneValid(LoginTxb.Text));
             }
         }
+
+        #region Texboxes
+
+        private void LoginTxb_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (LoginTxb.Text != "Введите номер телефона") return;
+            LoginTxb.Text = "";
+            LoginTxb.Foreground = new SolidColorBrush(Colors.Black);
+        }
+
+        private void PasswordTxb_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (PasswordTxb.Text != "Введите пароль") return;
+            PasswordTxb.Text = "";
+            PasswordTxb.Foreground = new SolidColorBrush(Colors.Black);
+        }
+        
+        private void LoginTxb_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (LoginTxb.Text != "") return;
+            LoginTxb.Text = "Введите номер телефона";
+            LoginTxb.Foreground = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void PasswordTxb_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (PasswordTxb.Text != "") return;
+            PasswordTxb.Text = "Введите пароль";
+            PasswordTxb.Foreground = new SolidColorBrush(Colors.Gray);
+        }
+        #endregion
     }
 }

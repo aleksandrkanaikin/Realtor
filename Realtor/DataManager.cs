@@ -164,6 +164,7 @@ namespace Realtor
                 .OrderBy(d => d.DealDate)
                 .Select(d => new SalesModel
                 {
+                    SaleId = d.DealID,
                     ObjectName = d.Properties.Type,
                     ClientFio = d.Clients.FIO,
                     Date = d.DealDate,
@@ -174,6 +175,20 @@ namespace Realtor
                 })
                 .ToList();
             return new ObservableCollection<SalesModel>(agentSales);
+        }
+        // метод для перевода статуса сделки "В процессе"
+        public void SaleStatusTransferInProcess(Guid saleId)
+        {
+            var sale = db.Deals.SingleOrDefault(d => d.DealID == saleId);
+            sale.DealStatus = "В процессе";
+            db.SaveChanges();
+        }
+        // метод для перевода статуса сделки "Завершено"
+        public void SaleStatusTransferFinished(Guid saleId)
+        {
+            var sale = db.Deals.SingleOrDefault(d => d.DealID == saleId);
+            sale.DealStatus = "Завершено";
+            db.SaveChanges();
         }
         // метод для удаления сделки
         public string DeleteSale(string saleName)

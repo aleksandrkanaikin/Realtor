@@ -22,8 +22,16 @@ namespace Realtor.Pages
 
         private void ClientSearchTxb_OnGotFocus(object sender, RoutedEventArgs e)
         {
+            if (ClientSearchTxb.Text != "Введите ФИО") return;
             ClientSearchTxb.Text = "";
             ClientSearchTxb.Foreground = new SolidColorBrush(Colors.Black);
+        }
+        
+        private void ClientSearchTxb_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ClientSearchTxb.Text != "") return;
+            ClientSearchTxb.Text = "Введите ФИО";
+            ClientSearchTxb.Foreground = new SolidColorBrush(Colors.Gray);
         }
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)

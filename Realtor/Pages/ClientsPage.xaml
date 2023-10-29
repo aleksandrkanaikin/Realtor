@@ -71,7 +71,8 @@
                              FontFamily="/Fonts/#Comfortaa"
                              Padding="42,20,0,15"
                              HorizontalAlignment="Center"
-                             GotFocus="ClientSearchTxb_OnGotFocus">
+                             GotFocus="ClientSearchTxb_OnGotFocus"
+                             LostFocus="ClientSearchTxb_OnLostFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="40"></Setter>
@@ -86,6 +87,7 @@
                     BorderThickness="0"
                     HorizontalAlignment="Center"
                     Margin="12,28,0,0"
+                    IsDefault="True"
                     Style="{StaticResource ButtonOverMouse}"
                     Click="SearchButton_OnClick">
                 <Image Source="../Images/SearchLogo.png"/>

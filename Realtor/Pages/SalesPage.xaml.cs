@@ -30,10 +30,17 @@ namespace Realtor.Pages
                 selectSale = sale;
                 SaleName.Text = sale.SaleName;
                 SaleDate.Text = sale.Date.ToString();
-                //SelectedSaleStatus.SelectedValue = sale.saleStatus;
+                if (sale.SaleStatus == "В процессе")
+                    SelectedSaleStatus.SelectedItem = InProcessSelectedSale;
+                if (sale.SaleStatus == "Завершено")
+                    SelectedSaleStatus.SelectedItem = FinishedSelectedSale;
                 SalePrice.Text = sale.Price.ToString();
                 ClientFio.Text = sale.ClientFio;
                 ObjectDescription.Text = sale.ObjectDescription;
+            }
+            else
+            {
+                SaleDescription.Visibility = Visibility.Hidden;
             }
         }
         
@@ -41,7 +48,7 @@ namespace Realtor.Pages
         private void StatusFilterBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem) StatusFilterBox.SelectedItem;
-            string selectedValue = selectedItem.Content.ToString();
+            // string selectedValue = selectedItem.Content.ToString();
             if (selectedItem ==  AllItem)
             {
                 SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);
@@ -58,7 +65,16 @@ namespace Realtor.Pages
         //Доработать перевод статуса сделки
         private void SelectedSaleStatus_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+            if (SelectedSaleStatus.SelectedItem == InProcessSelectedSale)
+            {
+                selectSale.SaleStatus = "В процессе";
+                _manager.SaleStatusTransferInProcess(selectSale.SaleId);
+            }
+            if (SelectedSaleStatus.SelectedItem == FinishedSelectedSale)
+            {
+                selectSale.SaleStatus = "Завершено";
+                _manager.SaleStatusTransferFinished(selectSale.SaleId);
+            }
         }
 
         private void DeleteSale_OnClick(object sender, RoutedEventArgs e)

@@ -165,14 +165,14 @@
                               Margin="10"
                               Width="200"
                               SelectionChanged="SelectedSaleStatus_OnSelectionChanged">
-                        <ComboBoxItem>
+                        <ComboBoxItem Name="InProcessSelectedSale">
                             <TextBlock Text="В процессе"
                                        FontSize="20"
                                        FontFamily="/Fonts/#Comfortaa"
                                        FontWeight="Bold"
                                        Foreground="#FF5B19"/>
                         </ComboBoxItem>
-                        <ComboBoxItem>
+                        <ComboBoxItem Name="FinishedSelectedSale">
                             <TextBlock Text="Завершено"
                                        FontSize="20"
                                        FontFamily="/Fonts/#Comfortaa"

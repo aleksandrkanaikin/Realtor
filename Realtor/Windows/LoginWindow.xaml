@@ -50,7 +50,8 @@
                      Padding="20,20,0,0"
                      Text="Введите номер телефона"
                      Margin="0,0,0,71"
-                     GotFocus="LoginTxb_OnGotFocus">
+                     GotFocus="LoginTxb_OnGotFocus"
+                     LostFocus="LoginTxb_OnLostFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="40"></Setter>
@@ -67,7 +68,8 @@
                      Padding="20,20,0,0"
                      Text="Введите пароль"
                      Margin="0,0,0,112"
-                     GotFocus="PasswordTxb_OnGotFocus">
+                     GotFocus="PasswordTxb_OnGotFocus"
+                     LostFocus="PasswordTxb_OnLostFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="40"></Setter>

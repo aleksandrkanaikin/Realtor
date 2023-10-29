@@ -10,13 +10,14 @@
         <DataTemplate x:Key="ObjectsListTemplate">
             <StackPanel Width="352" Height="359" Margin="0,0,0,0">
                 <StackPanel.Effect>
-                    <DropShadowEffect ShadowDepth="2" Direction="260"
-                                      Color="Black" Opacity="0.2"
-                                      BlurRadius="10" />
+                    <DropShadowEffect ShadowDepth="5" Direction="260"
+                                      Color="Black" Opacity="0.5"
+                                      BlurRadius="50"/>
                 </StackPanel.Effect>
                 <Image Source="../Images/Image.png"
-                       Width="317"
-                       Height="201">
+                       Width="300"
+                       Height="200"
+                       HorizontalAlignment="Left">
                     <Image.Resources>
                        <Style TargetType="Border">
                            <Setter Property="CornerRadius" Value="16"/>
@@ -33,7 +34,8 @@
                                FontFamily="/Fonts/#Inter"
                                FontWeight="Regular"
                                FontSize="14"
-                               Foreground="#FF5B19"/>
+                               Foreground="#FF5B19"
+                               Margin="0,20,0,0"/>
                     <TextBlock Text="{Binding Address}"
                                FontFamily="/Fonts/#Inter"
                                FontWeight="Regular"
@@ -66,7 +68,8 @@
                      Padding="22,15,0,15"
                      Margin="0,0,37,0"
                      VerticalAlignment="Bottom"
-                     GotFocus="NameSearchBox_OnGotFocus">
+                     GotFocus="NameSearchBox_OnGotFocus"
+                     LostFocus="NameSearchBox_OnLostFocus">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="30"/>
@@ -83,7 +86,8 @@
                      Padding="22,15,0,15"
                      Margin="0,0,37,0"
                      VerticalAlignment="Bottom"
-                     GotFocus="PriseSearchBox_OnGotFocus">
+                     GotFocus="PriseSearchBox_OnGotFocus"
+                     LostFocus="PriseSearchBox_OnLostFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="30"/>
@@ -99,7 +103,8 @@
                      Padding="22,15,0,15"
                      Margin="0,0,60,0"
                      VerticalAlignment="Bottom"
-                     GotFocus="AreaSearchBox_OnGotFocus">
+                     GotFocus="AreaSearchBox_OnGotFocus"
+                     LostFocus="AreaSearchBox_OnLostFocus">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="30"/>
@@ -114,6 +119,7 @@
                     HorizontalAlignment="Center"
                     Margin="12,28,0,0"
                     Style="{StaticResource ButtonOverMouse}"
+                    IsDefault="True"
                     Click="SearchButton_OnClick">
                 <Image Source="../Images/SearchLogo.png"/>
             </Button>
