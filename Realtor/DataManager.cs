@@ -119,7 +119,8 @@ namespace Realtor
             DateTime startOfMonth = new DateTime(today.Year, today.Month, 1);
             DateTime endOfMonth = startOfMonth.AddMonths(1);
 
-            int dealCountThisMonth = db.Deals.Count(d => d.AgentID == agentId && d.DealDate >= startOfMonth && d.DealDate < endOfMonth);
+            int dealCountThisMonth = db.Deals.Count(
+                d => d.AgentID == agentId && d.DealDate >= startOfMonth && d.DealDate < endOfMonth);
             return dealCountThisMonth > 0 ? dealCountThisMonth : 0;
         }
         // метод для получения количества клиентов за этот месяц

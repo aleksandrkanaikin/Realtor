@@ -21,22 +21,31 @@ namespace Realtor.Windows
             var selectProperty = ObjectsBox.SelectedItem as Entities.Properties;
             Entities.Properties property = db.Properties.Find(selectProperty.PropertyID);
             var selectClient = ClientsBox.SelectedItem as Clients;
-            Clients client = db.Clients.Find(selectClient.ClientID);
-
-            var newDeal = new Deals()
+            if (SaleNameTextBox.Text != "" || BudgetTextBox.Text != "" ||
+                ClientsBox.SelectedItem != null || ObjectsBox.SelectedItem != null)
             {
-                DealID = Guid.NewGuid(),
-                AgentID = AgentIdStorage.AgentId,
-                PropertyID = property.PropertyID,
-                ClientID = client.ClientID,
-                DealDate = DateTime.Now,
-                DealStatus = "В процессе",
-                DealName = SaleNameTextBox.Text,
-                Price = Convert.ToDecimal(BudgetTextBox.Text)
-            };
-            db.Deals.Add(newDeal);
-            db.SaveChanges();
-            Close();
+                Clients client = db.Clients.Find(selectClient.ClientID);
+                {
+                    var newDeal = new Deals()
+                    {
+                        DealID = Guid.NewGuid(),
+                        AgentID = AgentIdStorage.AgentId,
+                        PropertyID = property.PropertyID,
+                        ClientID = client.ClientID,
+                        DealDate = DateTime.Now,
+                        DealStatus = "В процессе",
+                        DealName = SaleNameTextBox.Text,
+                        Price = Convert.ToDecimal(BudgetTextBox.Text)
+                    };
+                    db.Deals.Add(newDeal);
+                    db.SaveChanges();
+                    Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)

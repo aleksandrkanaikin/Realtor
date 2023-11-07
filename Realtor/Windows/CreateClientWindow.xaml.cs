@@ -2,6 +2,7 @@
 using System.Windows;
 using Entities;
 using Realtor.Pages;
+using Realtor.Repository;
 
 namespace Realtor
 {
@@ -21,32 +22,39 @@ namespace Realtor
             string phone = PhoneTextBox.Text;
             string email = EmailTextBox.Text;
 
-            if (validator.EmailValid(email) == null && validator.PhoneValid(phone) == null)
+            if (FIOTextBox.Text != "" || PhoneTextBox.Text != "" || EmailTextBox.Text != "")
             {
-                newClient = new Clients()
+                if (validator.EmailValid(email) == null && validator.PhoneValid(phone) == null)
                 {
-                    ClientID = Guid.NewGuid(),
-                    Deals = null,
-                    Email = email,
-                    FIO = fio,
-                    Phone = phone,
-                    RegistrationDate = DateTime.Today
-                };
+                    newClient = new Clients()
+                    {
+                        ClientID = Guid.NewGuid(),
+                        AgentID = AgentIdStorage.AgentId,
+                        Email = email,
+                        FIO = fio,
+                        Phone = phone,
+                        RegistrationDate = DateTime.Today
+                    };
 
-                db.Clients.Add(newClient);
-                try
-                {
-                    db.SaveChanges();
-                    Close();
+                    db.Clients.Add(newClient);
+                    try
+                    {
+                        db.SaveChanges();
+                        Close();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                    }
                 }
-                catch (Exception exception)
+                else
                 {
-                    MessageBox.Show(exception.Message);
+                    MessageBox.Show(validator.EmailValid(email) + "\n или \n" + validator.PhoneValid(phone));
                 }
             }
             else
             {
-                MessageBox.Show(validator.EmailValid(email) + "\n или \n" + validator.PhoneValid(phone));
+                MessageBox.Show("Все поля должны быть заполнены");
             }
         }
 

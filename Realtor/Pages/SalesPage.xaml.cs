@@ -68,7 +68,7 @@ namespace Realtor.Pages
                 selectSale.SaleStatus = "В процессе";
                 _manager.SaleStatusTransferInProcess(selectSale.SaleId);
             }
-            if (SelectedSaleStatus.SelectedItem == FinishedSelectedSale)
+            else if (SelectedSaleStatus.SelectedItem == FinishedSelectedSale)
             {
                 selectSale.SaleStatus = "Завершено";
                 _manager.SaleStatusTransferFinished(selectSale.SaleId);

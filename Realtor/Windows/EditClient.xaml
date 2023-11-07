@@ -53,6 +53,7 @@
                 HorizontalAlignment="Left"
                 Margin="90,0,0,10"
                 Width="100"
+                IsDefault="True"
                 Background="#FF5B19"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="SaveButton_OnClick">
@@ -69,6 +70,7 @@
                 Margin="0,0,90,10"
                 Width="100"
                 Background="#FF5B19"
+                IsCancel="True"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="CancelButton_OnClick">
             <Button.Resources>

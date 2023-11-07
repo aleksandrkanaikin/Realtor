@@ -19,22 +19,29 @@ namespace Realtor.Windows
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (validator.EmailValid(EmailTextBox.Text) == null && validator.PhoneValid(PhoneTextBox.Text) == null)
+            if (string.IsNullOrWhiteSpace(EmailTextBox.Text) || string.IsNullOrWhiteSpace(PhoneTextBox.Text) 
+                                                             || string.IsNullOrWhiteSpace(FIOTextBox.Text))
             {
-                var client = db.Clients.Find(clientForUpdate.ClientID);
-                if (client != null)
+                if (validator.EmailValid(EmailTextBox.Text) == null && validator.PhoneValid(PhoneTextBox.Text) == null)
                 {
-                    client.FIO = FIOTextBox.Text;
-                    client.Phone = PhoneTextBox.Text;
-                    client.Email = EmailTextBox.Text;
-                    db.SaveChanges();
+                    var client = db.Clients.Find(clientForUpdate.ClientID);
+                    if (client != null)
+                    {
+                        client.FIO = FIOTextBox.Text;
+                        client.Phone = PhoneTextBox.Text;
+                        client.Email = EmailTextBox.Text;
+                        db.SaveChanges();
+                    }
+                    Close();
                 }
-                Close();
+                else
+                {
+                    MessageBox.Show("Все поля должны быть заполнены");
+                }
             }
             else
             {
-                MessageBox.Show(validator.EmailValid(EmailTextBox.Text) + "\n или \n" + 
-                                validator.PhoneValid(PhoneTextBox.Text));
+                
             }
         }
 

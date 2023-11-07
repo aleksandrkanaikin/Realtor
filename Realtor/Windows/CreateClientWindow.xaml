@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Realtor"
         mc:Ignorable="d"
+        Icon="../Images/Logo.png"
         Title="Новый клиент" Height="300" Width="400">
     <Grid>
         <Label Content="ФИО:"
@@ -53,6 +54,7 @@
                 Margin="90,0,0,10"
                 Width="100"
                 Background="#FF5B19"
+                IsDefault="True"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="CreateButton_OnClick">
             <Button.Resources>
@@ -68,6 +70,7 @@
                 Margin="0,0,90,10"
                 Width="100"
                 Background="#FF5B19"
+                IsCancel="True"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="CancelButton_OnClick">
             <Button.Resources>

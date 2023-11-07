@@ -104,6 +104,7 @@
                 Margin="90,0,0,10"
                 Width="100"
                 Background="#FF5B19"
+                IsDefault="True"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="CreateButton_OnClick">
             <Button.Resources>
@@ -119,6 +120,7 @@
                 Margin="0,0,90,10"
                 Width="100"
                 Background="#FF5B19"
+                IsCancel="True"
                 Style="{StaticResource ButtonOverMouse}"
                 Click="CancelButton_OnClick">
             <Button.Resources>
