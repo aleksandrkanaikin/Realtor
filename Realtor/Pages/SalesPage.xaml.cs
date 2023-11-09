@@ -47,7 +47,6 @@ namespace Realtor.Pages
         private void StatusFilterBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem) StatusFilterBox.SelectedItem;
-            // string selectedValue = selectedItem.Content.ToString();
             if (selectedItem ==  AllItem)
             {
                 SalesListBox.ItemsSource = _manager.GetAllSalesListForAgent(AgentIdStorage.AgentId);

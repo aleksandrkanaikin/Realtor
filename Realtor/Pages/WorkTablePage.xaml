@@ -75,11 +75,11 @@
                            Background="White" 
                            Width="566"
                            Height="390">
-                   <TextBlock Text="Завершенные продажи"
+                   <TextBlock Text="Новые продажи"
                               FontSize="34"
                               FontFamily="/Fonts/#Comfortaa"
                               VerticalAlignment="Top"
-                              Padding="80,0,0,0"/>
+                              HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="0,68,0,0"
                                Width="186"
@@ -130,7 +130,7 @@
                               FontSize="34"
                               FontFamily="/Fonts/#Comfortaa"
                               VerticalAlignment="Top"
-                              Padding="170,0,0,0"/>
+                              HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="0,68,0,0"
                                Width="186"
