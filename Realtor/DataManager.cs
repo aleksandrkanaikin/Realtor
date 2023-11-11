@@ -13,7 +13,7 @@ namespace Realtor
 {
     public class DataManager
     {
-        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         
         // метод для входа
         public string LoginManager(string number, string password)

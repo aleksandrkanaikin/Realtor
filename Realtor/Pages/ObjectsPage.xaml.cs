@@ -10,7 +10,7 @@ namespace Realtor.Pages
 {
     public partial class ObjectsPage : Page
     {
-        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         private DataManager _manager = new DataManager();
         public ObjectsPage()
         {

@@ -14,6 +14,21 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,61 +66,83 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents.cs">
-      <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Clients.cs">
-      <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Deals.cs">
-      <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Properties.cs">
-      <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealtyAgencyDB.Context.cs">
+    <Compile Include="RealtyAgencyDBEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RealtyAgencyDB.Context.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RealtyAgencyDB.cs">
+    <Compile Include="RealtyAgencyDBEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RealtyAgencyDB.tt</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="RealtyAgencyDB.Designer.cs">
+    <Compile Include="RealtyAgencyDBEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RealtyAgencyDB.edmx</DependentUpon>
+      <DependentUpon>RealtyAgencyDBEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>RealtyAgencyDBEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="RealtyAgencyDB.edmx">
+    <EntityDeploy Include="RealtyAgencyDBEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RealtyAgencyDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>RealtyAgencyDBEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="RealtyAgencyDB.edmx.diagram">
-      <DependentUpon>RealtyAgencyDB.edmx</DependentUpon>
+    <None Include="RealtyAgencyDBEntities.edmx.diagram">
+      <DependentUpon>RealtyAgencyDBEntities.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RealtyAgencyDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RealtyAgencyDB.edmx</DependentUpon>
-      <LastGenOutput>RealtyAgencyDB.Context.cs</LastGenOutput>
+    <Content Include="RealtyAgencyDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="RealtyAgencyDB.tt">
+    <Content Include="RealtyAgencyDBEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RealtyAgencyDB.edmx</DependentUpon>
-      <LastGenOutput>RealtyAgencyDB.cs</LastGenOutput>
+      <DependentUpon>RealtyAgencyDBEntities.edmx</DependentUpon>
+      <LastGenOutput>RealtyAgencyDBEntities.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="RealtyAgencyDBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RealtyAgencyDBEntities.edmx</DependentUpon>
+      <LastGenOutput>RealtyAgencyDBEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="RealtyAgencyDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>RealtyAgencyDB.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

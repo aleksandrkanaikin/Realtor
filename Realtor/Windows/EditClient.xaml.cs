@@ -5,7 +5,7 @@ namespace Realtor.Windows
 {
     public partial class EditClient : Window
     {
-        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         private Clients clientForUpdate;
         private Validator validator = new Validator();  
         public EditClient(Clients clientForEdit)

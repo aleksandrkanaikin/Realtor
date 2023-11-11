@@ -8,7 +8,7 @@ namespace Realtor
 {
     public partial class CreateClientWindow : Window
     {
-        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         private Clients newClient;
         private Validator validator = new Validator();
         public CreateClientWindow()

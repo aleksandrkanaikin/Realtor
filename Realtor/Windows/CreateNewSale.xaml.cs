@@ -8,7 +8,7 @@ namespace Realtor.Windows
 {
     public partial class CreateNewSale : Window
     {
-        private RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         public CreateNewSale()
         {
             InitializeComponent();

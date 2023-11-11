@@ -27,8 +27,8 @@ namespace Entities
         public Nullable<System.DateTime> RegistrationDate { get; set; }
         public Nullable<System.Guid> AgentID { get; set; }
     
+        public virtual Agents Agents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deals> Deals { get; set; }
-        public virtual Agents Agents { get; set; }
     }
 }

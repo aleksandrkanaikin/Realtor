@@ -17,9 +17,9 @@ namespace Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Agents()
         {
+            this.Clients = new HashSet<Clients>();
             this.Deals = new HashSet<Deals>();
             this.Properties = new HashSet<Properties>();
-            this.Clients = new HashSet<Clients>();
         }
     
         public System.Guid AgentID { get; set; }
@@ -31,10 +31,10 @@ namespace Entities
         public Nullable<System.DateTime> HireDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clients> Clients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deals> Deals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Properties> Properties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

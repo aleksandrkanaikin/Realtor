@@ -11,7 +11,7 @@ namespace Realtor.Pages
 {
     public partial class SalesPage : Page
     {
-        private static RealtyAgencyDBEntities db = new RealtyAgencyDBEntities();
+        private static RealtyAgencyDBEntity db = new RealtyAgencyDBEntity();
         private DataManager _manager = new DataManager();
         private SalesModel selectSale = new SalesModel();
 
