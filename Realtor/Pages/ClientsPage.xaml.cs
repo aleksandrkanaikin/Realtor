@@ -88,5 +88,10 @@ namespace Realtor.Pages
             // ClientsDataGrid.ItemsSource = _manager.GetAllClient();
             ClientsList.ItemsSource = _manager.GetAllClient();
         }
+        
+        private void ClientsList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -39,11 +39,33 @@
                                FontFamily="/Fonts/#Inter"
                                Text="{Binding Email}"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Width="310"
+                    <TextBlock Width="190"
                                FontSize="18"
                                FontFamily="/Fonts/#Inter"
                                Text="{Binding RegistrationDate, StringFormat=dd.MM.yyyy}"
                                HorizontalAlignment="Center"/>
+                    <Button Name="EditButton"
+                            Height="40"
+                            Width="40"
+                            Background="White"
+                            BorderThickness="0"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,0"
+                            Style="{StaticResource ButtonOverMouse}"
+                            Click="EditMenuItem_Click">
+                        <Image Source="../Images/edit.png"/>
+                    </Button>
+                    <Button Name="DeleteButton"
+                            Height="40"
+                            Width="40"
+                            Background="White"
+                            BorderThickness="0"
+                            HorizontalAlignment="Center"
+                            Margin="20,0,0,0"
+                            Style="{StaticResource ButtonOverMouse}"
+                            Click="DeleteMenuItem_Click">
+                        <Image Source="../Images/delete.png"/>
+                    </Button>
                 </WrapPanel>
             </WrapPanel>
         </DataTemplate>
@@ -151,7 +173,8 @@
                      Margin="0,10,0,0"
                      BorderThickness="0"
                      ItemTemplate="{StaticResource ClientsTemplate}"
-                     ContextMenu="{StaticResource ClientContextMenu}">
+                     ContextMenu="{StaticResource ClientContextMenu}"
+                     SelectionChanged="ClientsList_OnSelectionChanged">
             </ListBox>
         </StackPanel>
         <Button Grid.Row="2"
